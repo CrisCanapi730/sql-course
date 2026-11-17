@@ -12,7 +12,23 @@ INSERT INTO teams
 VALUES
 ('Real Madrid', 'Spain', 1902, 1),
 ('FC Barcelona', 'Spain', 1899, 2),
-('Atletico Madrid', 'Spain', 1903, 3);
+('Atletico Madrid', 'Spain', 1903, 3),
+('Chelsea FC', 'England', 1905, 1),
+('Manchester City', 'England', 1894, 2),
+('Manchester United', 'England', 1902, 3);
+
+-- insertamos entrenadores
+INSERT INTO coaches
+(first_name, last_name, nationality, team_id)
+VALUES
+('Carlo', 'Ancelotti', 'Italian', 1),
+('Hansi', 'Flick', 'German', 2),
+('Diego', 'Simeone', 'Argentinian', 3),
+('Pep', 'Guardiola', 'Spanish', NULL),
+('Jurgen', 'Klopp', 'German', NULL),
+('Zinedine', 'Zidane', 'French', NULL),
+('Carlo', 'Ancelotti', 'Italian', NULL);
+
 
 -- insertamos jugadores
 INSERT INTO players
