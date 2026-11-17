@@ -46,13 +46,50 @@ SELECT * FROM teams
 RIGHT JOIN coaches ON teams.id = coaches.team_id;
 
 
--- LEFT ANTI JOIN , only the thable of the left without matching data
+-- LEFT ANTI JOIN ===== , only the thable of the left without matching data
 -- OBTENER TODOS LOS EQUIPOS QUE NO TIENEN NINGUN COACH
 SELECT * FROM teams
 LEFT JOIN coaches
 ON teams.id = coaches.team_id
 WHERE coaches.team_id IS NULL;
+-- RIGHT ANTI JOIN ===== , only the table on the right withou the matching data between the two tables
+-- OBTENER LOS COACHES QUE NO PERTENECEN A NINGUN EQUIPO
+SELECT * FROM teams
+RIGHT JOIN coaches
+ON teams.id = coaches.team_id
+WHERE teams.id IS NULL;
 
+-- FULL ANTI JOIN, THIS DONT WORKS ON MYSQL BUT it works on postgreSQL and SQL
+SELECT * FROM teams
+FULL JOIN coaches
+ON teams.id = coaches.team_id
+WHERE teams.id IS NULL 
+OR coaches.team_id IS NULL;
+
+-- FULL ANTI JOIN in MySQL
+SELECT * FROM teams
+LEFT JOIN coaches
+ON teams.id = coaches.team_id
+WHERE coaches.team_id IS NULL
+UNION
+SELECT * FROM teams
+RIGHT JOIN coaches
+ON teams.id = coaches.team_id
+WHERE teams.id IS NULL;
+
+-- OBTENER LOS COACHES QUE TIENEN UN EQUIPO SIN USAR INNER JOIN
+SELECT * FROM coaches
+LEFT JOIN teams
+ON coaches.team_id = teams.id
+WHERE coaches.team_id IS NOT NULL;
+-- the same with an inner join
+SELECT * FROM coaches
+INNER JOIN teams
+ON coaches.team_id = teams.id;
+
+-- CROSS Join -- generate all posible combinations
+SELECT * FROM coaches
+CROSS JOIN teams;
 
 
 
